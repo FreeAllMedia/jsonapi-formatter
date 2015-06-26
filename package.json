@@ -20,7 +20,9 @@
     "url": "https://github.com/FreeAllMedia/jsonapi-formatter/issues"
   },
   "homepage": "https://github.com/FreeAllMedia/jsonapi-formatter",
-  "dependencies": {},
+  "dependencies": {
+    "blunder": "0.0.0"
+  },
   "devDependencies": {
     "babel": "^5.5.6",
     "chai": "^3.0.0",
