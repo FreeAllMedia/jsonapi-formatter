@@ -14,7 +14,20 @@
     "jsonapi-formatter"
   ],
   "author": "Free All Media",
-  "contributors": [],
+  "contributors": [
+    {
+      "name": "nicosommi",
+      "email": "nicosommi@gmail.com"
+    },
+    {
+      "name": "dcrockwell",
+      "email": "dcautomates@gmail.com"
+    },
+    {
+      "name": "paulgoggin",
+      "email": "pgoggin@gmail.com"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/FreeAllMedia/jsonapi-formatter/issues"
