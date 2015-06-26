@@ -3,10 +3,18 @@
 ES6 Component that works as an omnirouter middleware to provide jsonapi responses.
 
 ```javascript
-import Jsonapi-formatter from "jsonapi-formatter";
+import JsonApiFormatter from "jsonapi-formatter";
+import Router from "omnirouter";
 
-const jsonapi-formatter = new Jsonapi-formatter;
-jsonapi-formatter.saySomething(); // will output "Something"
+router = new Router(options);
+router.get("/user", (request, response) => {
+	response.internalServerError(new Error("Oh no!"));
+});
+//inject middleware
+router.use(JsonApiFormatter);
+router.listen(portNumber, () => {
+	//now your responses will return an envelope according to the [jsonapi format](http://jsonapi.org/format) (notice that the entities you may return inside of it are not automatically converted, currently)
+}));
 ```
 
 # Quality and Compatibility
@@ -56,10 +64,30 @@ define(["require"] , function (require) {
 ```
 
 # Getting Started
+Json Api Formatter formats your response into a format according to the [jsonapi format](http://jsonapi.org/format)
+Currently it works as an omnirouter middleware, or manually by calling the methods
+* formatResponse(response)
+	Receives a response object that has at least a set function by now.
+* format(body)
+	Receives a body object to add the envelop to it.
 
-## More insights
+## Using it with omnirouter
+Example usage with [omnirouter](https://github.com/FreeAllMedia/omnirouter)
 
-In order to say something, you should know that `jsonapi-formatter()` ... (add your test here)
+```javascript
+import JsonApiFormatter from "jsonapi-formatter";
+import Router from "omnirouter";
+
+router = new Router(options);
+router.get("/user", (request, response) => {
+	response.internalServerError(new Error("Oh no!"));
+});
+//inject middleware
+router.use(JsonApiFormatter);
+router.listen(portNumber, () => {
+	//now your responses will return an envelope according to the [jsonapi format](http://jsonapi.org/format) (notice that the entities you may return inside of it are not automatically converted, currently)
+}));
+```
 
 # How to Contribute
 
@@ -76,6 +104,3 @@ It's easy to run the test suite locally, and *highly recommended* if you're usin
 ```
 npm test
 ```
-
-
-
