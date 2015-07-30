@@ -33,13 +33,13 @@
     "url": "https://github.com/FreeAllMedia/jsonapi-formatter/issues"
   },
   "homepage": "https://github.com/FreeAllMedia/jsonapi-formatter",
-  "dependencies": {
-    "blunder": "0.0.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel": "^5.5.6",
+    "babel-eslint": "^4.0.5",
     "chai": "^3.0.0",
     "coveralls": "^2.11.2",
+    "eslint": "^0.24.1",
     "gulp": "^3.9.0",
     "gulp-babel": "^5.1.0",
     "gulp-istanbul": "^0.10.0",
@@ -47,9 +47,9 @@
     "karma": "^0.12.36",
     "karma-browserify": "^4.2.1",
     "karma-chai": "^0.1.0",
+    "karma-detect-browsers": "^2.0.0",
     "karma-mocha": "^0.1.10",
     "karma-sauce-launcher": "^0.2.11",
-    "karma-detect-browsers": "^2.0.0",
     "mocha": "^2.2.5"
   }
 }
