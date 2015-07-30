@@ -1,6 +1,6 @@
 {
   "name": "jsonapi-formatter",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "ES6 Component that works as an omnirouter middleware to provide jsonapi responses.",
   "main": "index.js",
   "scripts": {
