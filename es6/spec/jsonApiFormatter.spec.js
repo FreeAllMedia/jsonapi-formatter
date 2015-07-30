@@ -1,15 +1,21 @@
 import JsonApiFormatter from "../lib/jsonApiFormatter.js";
-import MultiError from "blunder";
 
 describe("JsonApiFormatter", () => {
 	let formatter,
 		data,
-		error;
+		error,
+		secondError,
+		multiError;
 
 	beforeEach(() => {
 		formatter = new JsonApiFormatter();
 		data = {id: 2, name: "Bob Belcher Jr", age: 15};
 		error = new Error("Bob Belcher does not have any kids.");
+		secondError = new Error("No, Bob does not have a wife neither.");
+		multiError = new Error();
+		multiError.toJSON = () => {
+				return [error, secondError];
+			};
 	});
 
 	describe(".format(body)", () => {
@@ -18,10 +24,20 @@ describe("JsonApiFormatter", () => {
 		});
 
 		it("add the .errors root element on the provided body if the (body instanceof MultiError === true)", () => {
-			formatter.format(new MultiError(error)).should.eql({errors: [{
-				title: error.name,
-				details: error.message
-			}]});
+			formatter.format(multiError).should.eql(
+				{
+					errors: [
+						{
+							title: error.name,
+							details: error.message
+						},
+						{
+							title: secondError.name,
+							details: secondError.message
+						}
+					]
+				}
+			);
 		});
 
 		it("add the .errors root element on the provided body if the (body instanceof Error === true)", () => {

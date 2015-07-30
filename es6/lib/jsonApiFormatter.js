@@ -1,5 +1,3 @@
-import MultiError from "blunder";
-
 export default class JsonApiFormatter {
 	formatResponse(response) {
 		if(response && typeof response.set === "function") {
@@ -8,15 +6,16 @@ export default class JsonApiFormatter {
 	}
 
 	format(body) {
-		if(body instanceof MultiError) {
-			let errors = [];
-			body.errors.forEach((error) => {
-				errors.push({
+		if(body instanceof Error && (typeof body.toJSON === "function")) {
+			let errors = body.toJSON();
+			let result = [];
+			errors.forEach((error) => {
+				result.push({
 					title: error.name,
 					details: error.message
 				});
 			});
-			return {errors: errors};
+			return {errors: result};
 		} else if(body instanceof Error) {
 			return {
 				errors: [
