@@ -3,11 +3,17 @@ node_js:
 - '0.12'
 - '0.11'
 - '0.10'
-- 'iojs-v1'
-- 'iojs-v2'
+- iojs-v1
+- iojs-v2
 script: npm test
 before_script:
 - npm install
 after_success:
-  - ./node_modules/coveralls/bin/coveralls.js < ./lcov.info
-
+- ./node_modules/coveralls/bin/coveralls.js < ./lcov.info
+deploy:
+  provider: npm
+  email: fam-operations@freeallmedia.com
+  api_key:
+    secure: bDwKHmm7uqjI+jfHvBRn8hgDG6rW98yOILsYzZa2wdXaF8JQAMq/z/LiYE5hNd+p9pfqZvMf6VrJBjCFZDj1nFzOlNTtOSpIekHwzdCb/eHU4hmPb1th0/qC3rCLu52zXQbWFxfyrPW9fYUcQmo4JgEbiRAGBD2EQa10vKMjPYbYaj2+2bD9pNq4YZvhjIt7JgoH5PEKxbB7l2At/annV7wwWhgEFVOERqOp8jtkF5b99BB6pBdj5+FBc+g4fvRMMzG94T3AsADNs3InAKrhvNOdpc3NlXepmqYX/kl8U5urhmuzwSsmhM5hk+8lzua1aCIissW89WqPwGxvtqaenJ0+shvDedAiFGdUiegzFWs4QnBQp+jp5aejyy+tFK6HxbykoyF7TuTYfy9vTQ+dWz/PfazfYBm8mIRzKmS3s4nW8Pj0yAqXpVVrxFziND5tZcMQm+ZmfEW2P5z+dFbSp4MK1Vc5ZLhpdC6wG1/PmIp7rOyUU8Xz3WH4nvoQ5nYztyb+vzXzZ0QY/g9eGc1GswKHWQQYL1g/STPfhu7sCwtS+Z1IjJvehnJri0SsvzbuzIOzmy1kXDlHtAXqspRbzz8baCagq6LreNyvSmwICITcHRn2CslBPbbL2F/Jb550Tw0eEkWxYs6yi3mvbxnRQRcTqyLhkxnuT5Huf3kyvYI=
+  on:
+    repo: FreeAllMedia/jsonapi-formatter
